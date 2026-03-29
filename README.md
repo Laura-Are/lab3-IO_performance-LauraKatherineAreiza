@@ -5,7 +5,9 @@ Laura KAtherine Areiza Henao - 1042150762
 
 Para identificar el tipo de unidad física del sistema, se utilizó PowerShell en Windows ejecutado como administrador con el siguiente comando:
 
-```<Get-PhysicalDisk | Select-Object FriendlyName, MediaType, BusType>```
+```
+<Get-PhysicalDisk | Select-Object FriendlyName, MediaType, BusType>
+```
 
 A continuación, se muestra la evidencia del resultado:
 
