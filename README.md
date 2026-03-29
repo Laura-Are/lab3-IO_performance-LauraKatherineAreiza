@@ -56,5 +56,15 @@ Utilice estos valores como línea base para validar si sus resultados son cohere
 
 
 > [!WARNING]
-> La carga de CPU puede variar debido a procesos en segundo plano del sistema operativo.
+> **Preparación antes del benchmark:**
+> 
+> - Cerrar aplicaciones de alto consumo (navegadores, IDEs, etc.).
+> - Verificar que no haya actualizaciones en segundo plano.
+> - Evitar el uso de máquinas virtuales o contenedores.
+> - Utilizar archivos grandes para evitar lecturas desde caché.
+> - Realizar accesos dispersos para reducir la pre-lectura.
+> - Ejecutar cada prueba de forma independiente.
+
+
+
 
