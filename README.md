@@ -39,7 +39,6 @@ Antes de iniciar las pruebas, se registran las siguientes características del e
 CPU : Get-CimInstance Win32_Processor | Select-Object Name, NumberOfCores
 
 RAM : Get-CimInstance Win32_ComputerSystem | Select-Object TotalPhysicalMemory
-
 ```
 
 <p style="text-align: center;">
