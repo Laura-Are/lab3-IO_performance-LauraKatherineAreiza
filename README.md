@@ -9,7 +9,9 @@ Para identificar el tipo de unidad física del sistema, se utilizó PowerShell e
 
 A continuación, se muestra la evidencia del resultado:
 
-![Resultado del comando](evidencia/Identificación_de_la_Tecnología_de_Almacenamiento.png)
+<p style="text-align: center;">
+  <img src="evidencia/Identificación_de_la_Tecnología_de_Almacenamiento.png" width="600"/>
+</p>
 
 De acuerdo con los valores obtenidos:
 
@@ -18,4 +20,41 @@ BusType: NVMe
 
 Esto indica que mi equipo cuenta con una unidad de estado sólido (SSD) que utiliza la tecnología NVMe.
 
-[def]: dentificación_de_la_Tecnología_de_Almacenamiento.pn
+## Registro de Especificaciones del Sistema
+
+Antes de iniciar las pruebas, se registran las siguientes características del entorno de ejecución. Esta información permite contextualizar posibles variaciones en los tiempos de respuesta.
+
+| Parámetro                 | Valor de Referencia |
+|---------------------------|---------------------|
+| Sistema Operativo         | Windows 11          |
+| CPU (Modelo y Núcleos)    | 12th Gen Intel Core i5-1235U / 10 núcleos |
+| Memoria RAM Total         | 8 GB                |
+| Tipo de Disco             | SSD NVMe            |
+| Carga de CPU en Reposo    | 4% - 11%            |
+
+
+```
+CPU : Get-CimInstance Win32_Processor | Select-Object Name, NumberOfCores
+
+RAM : Get-CimInstance Win32_ComputerSystem | Select-Object TotalPhysicalMemory
+
+```
+
+<p style="text-align: center;">
+  <img src="evidencia/Paso_2_Info_CPU_RAM_Tabla.png" width="600"/>
+</p>
+
+
+Referencias de Rendimiento Teórico
+Utilice estos valores como línea base para validar si sus resultados son coherentes con la teoría:
+
+|Tecnología |Latencia Promedio|	Throughput Típico|IOPS Típico (4 KB aleatorio)|Escala de Tiempo|
+|-----------|-----------------|------------------|----------------------------|----------------|
+|HDD        |	10 ms	      |100 - 150 MB/s    |75 – 300	                  |Milisegundos    |
+|SSD (SATA) |	100 µs        |	500 - 550 MB/s	 |50,000 – 100,000            |	Microsegundos  |
+|SSD NVMe   |	10 - 20 µs    |	2 - 7 GB/s	     |500,000 – 1,000,000+        |	Microsegundos  |
+
+
+> [!WARNING]
+> La carga de CPU puede variar debido a procesos en segundo plano del sistema operativo.
+
