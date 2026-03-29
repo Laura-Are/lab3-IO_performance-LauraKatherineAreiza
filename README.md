@@ -7,3 +7,15 @@ Para identificar el tipo de unidad física del sistema, se utilizó PowerShell e
 
 ```<Get-PhysicalDisk | Select-Object FriendlyName, MediaType, BusType>```
 
+A continuación, se muestra la evidencia del resultado:
+
+![Resultado del comando](evidencia/Identificación_de_la_Tecnología_de_Almacenamiento.png)
+
+De acuerdo con los valores obtenidos:
+
+MediaType: SSD
+BusType: NVMe
+
+Esto indica que mi equipo cuenta con una unidad de estado sólido (SSD) que utiliza la tecnología NVMe.
+
+[def]: dentificación_de_la_Tecnología_de_Almacenamiento.pn
