@@ -1,5 +1,5 @@
 # laboratorio # 3 - IO performance
-Laura KAtherine Areiza Henao - 1042150762
+Laura Katherine Areiza Henao - 1042150762
 
 ## Preparación del entorno experimental
 
