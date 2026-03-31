@@ -92,76 +92,7 @@ CPU en reposo : (Get-Counter '\Processor(_Total)\% Processor Time').CounterSampl
 
 ### Etapa 2
 
-* Realizar el portafolio y copiarlo.
-* Descargar el archivo disk_io_lab_guided.ipynb
-* Seguir las instrucciones del archivo.
+- [x] Realizar el portafolio remoto y copiarlo.
+- [x] Descargar el archivo disk_io_lab_guided.ipynb y moverlo al 
+- [x] Seguir las instrucciones del archivo.
 
-#### Punto de control 1
-Antes de continuar, responda brevemente:
-
-1. **¿Qué representa la latencia en este laboratorio?:**
-La latencia representa el tiempo que tarda el sistema en comenzar a leer un bloque de datos desde el disco. Es como el "tiempo de reacción" antes de que empiece realmente la tranferencia, y incluye el tiempo de retraso que implica encontrar la informacion fisicamente. Es el tiempo que se necesita para tratar de acceder a los datos.
-
-2. **¿Qué representa el throughput?:**
-El throughput representa la velocidad a la que se puede procesar los datos una vez que se empezo la tranferencia. osea, que tan rapido es el tiempo de el viaje del disco a la memoria.
-
-3. **¿Por qué en acceso secuencial normalmente se asume que $M \approx 1$?:**
-En el accceso secuencial normalmente se asume que $M \approx 1$ porque al estar los datos organizados de una forma continua el disco solo necesita ubicarse una vez y a partir de ahy puede seguir leyendo sin interrupciones. Se podria decir que no tendria que "buscar" cada bloque por separado.
-
-4. **¿Por qué en acceso aleatorio $M$ tiende a ser mayor?:**
-En el acceso aleatorio, $M$ tiende a ser mayor porque cada bloque de datos puede estar en ubicaciones diferentes del disco. Esto oabliga al sistema a ubicarse constantemente, generando muchos accesos independientes al disco.
-
-#### Punto de control 2
-
-Se configuro el experimento.
-
- **(1) Tamaño del archivo:** ¿Es suficiente para superar la caché RAM de
-   su equipo? Compare con los valores de RAM registrados en la Etapa 1
-   de la guía.
-
-    El tamaño del archivo es de 256 MB, lo que es mucho menor que la memoria de RAM de mi equipo. Por lo tanto, no es suficiente para superar el caché completamente, ya que el sistema podria cargar gran parte del archivo en memoria y reducir los accesos al disco.
-
-**(2) Tamaño de bloque:** Los tamaños evaluados (4 KB, 16 KB, 64 KB,
-   256 KB) corresponden a tamaños típicos de páginas en sistemas
-   operativos y motores de bases de datos. ¿Cuál esperaría que tuviera
-   mejor rendimiento en acceso aleatorio y por qué?
-
-    En el acceso aleatorio se espera que los bloques grandes (como 256 KB) tengan mejor rendimiento, porque permiten leer mas datos en cada acceso y asi poder reducir la cantidad de accesos totales ($M$).
-
-**(3) Entorno de ejecución:** ¿Está ejecutando en local o en Google Colab?
-   Recuerde que en Colab los tiempos medidos corresponden al hardware de
-   Google, no al suyo.
-
-    Estoy ejecutando este experimento en un entorno local, por lo que los tiempos medidos cooresponden al hardware real de mi equipo.
-
-#### Punto de control 3
-
-Este espacio pertenece a l celda de reinicio del experimento.
-
-#### Punto de control 4
-
-Después de crear el archivo, responda:
-
-**(1) ¿Qué papel cumple este archivo dentro del experimento?:**
-El archivo cumple el papel de representar los datos almacenados en disco sobre los que se realizaran las lecturas. Es la base del experimiento, ya que permite simular accesos reales para medir la latencia y el throughput.
-
-**(2) ¿Por qué es útil trabajar con un archivo relativamente grande?**
-Es util trabajar con un archivo grande porque es lo mas parecdio al comportamiendo real del almacenamiento, ya que es mas probable que los datos no quepan completamente en memoria y el sistema tenga que acceder al disco.
-
-**(3) ¿Qué cree que ocurriría si el archivo fuera demasiado pequeño?**
-Si el archivo fuera demasiado pequeño, probablemente el sistema lo cargaria totalmente en memoria y no abrian accesos reales al disco. Esto seria que los tiempos medidos fueran realativamente bajos y no reflejarian el costo real de las operaciones de I/O
-
-## Análisis de resultados empíricos
-
-Observe la tabla generada y responda:
-
-1. ¿Cuál patrón de acceso fue más rápido para cada tamaño de bloque?
-2. ¿El throughput cambió al aumentar el tamaño de bloque?
-3. ¿En qué caso observó la mayor diferencia entre secuencial y aleatorio?
-
-> **Criterio mínimo:** la respuesta 3 debe incluir valores numéricos
-> concretos obtenidos de la tabla (throughput en MiB/s o tiempo en s).
-
-### Respuesta
-
-En los resultados obtenidos, se observó que para bloques de 4 KB y 16 KB el acceso aleatorio fue más rápido que el secuencial, lo cual no corresponde al comportamiento esperado y puede explicarse por efectos de caché del sistema operativo. Sin embargo, para bloques de 64 KB y 256 KB, el acceso secuencial fue más rápido, lo cual es coherente con la teoría, ya que permite aprovechar la lectura continua de datos. Además, el throughput aumentó al incrementar el tamaño del bloque en ambos patrones de acceso; por ejemplo, en acceso secuencial pasó de aproximadamente 1204.09 MiB/s con bloques de 4 KB a más de 3976.41 MiB/s con bloques de 256 KB, evidenciando una mejora significativa en el rendimiento. Finalmente, la mayor diferencia entre acceso secuencial y aleatorio se presentó en bloques de 256 KB, donde el acceso secuencial alcanzó un throughput de 3976.41 MiB/s con un tiempo de 0.0644 s, mientras que el acceso aleatorio obtuvo 3296.25 MiB/s y un tiempo de 0.3034 s.
