@@ -93,7 +93,7 @@ CPU en reposo : (Get-Counter '\Processor(_Total)\% Processor Time').CounterSampl
 ### Etapa 2
 
 - [x] Realizar el portafolio remoto y copiarlo.
-- [x] Descargar el archivo disk_io_lab_guided.ipynb y moverlo al 
+- [x] Descargar el archivo disk_io_lab_guided.ipynb y moverlo a la carpeta del repositorio
 - [x] Seguir las instrucciones del archivo.
 
 #### Verificacion del entorno
